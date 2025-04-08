@@ -2,32 +2,28 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
+use App\Models\Post;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Broadcasting\InteractsWithSockets;
 
 class PostCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $post;
+
     /**
      * Create a new event instance.
-     *
-     * @return void
      */
-    public function __construct()
+    public function __construct(Post $post) // ✅ Accept post as a parameter
     {
-        $this->post = $post;
+        $this->post = $post; // ✅ Assign it to the public property
     }
 
     /**
      * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
      */
     public function broadcastOn()
     {
