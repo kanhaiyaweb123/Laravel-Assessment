@@ -17,9 +17,9 @@ class PostCreated
     /**
      * Create a new event instance.
      */
-    public function __construct(Post $post) // ✅ Accept post as a parameter
+    public function __construct(Post $post) 
     {
-        $this->post = $post; // ✅ Assign it to the public property
+        $this->post = $post; 
     }
 
     /**
